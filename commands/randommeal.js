@@ -21,7 +21,11 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setColor(0xefff00)
       .setTitle(answer.strMeal)
-      .setURL(answer.strSource);
+      .setURL(answer.strSource)
+      .setImage(`${answer.strMealThumb}`)
+      .addFields(
+        {name: 'Category', value: answer.strCategory}
+      );
 
     interaction.editReply({ embeds: [embed] });
   },
