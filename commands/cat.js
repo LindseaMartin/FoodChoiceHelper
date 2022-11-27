@@ -1,10 +1,10 @@
 const { SlashCommandBuilder } = require('discord.js');
-//const { request } = require('undici');
+const { request } = require('undici');
 
 module.exports = {
 data: new SlashCommandBuilder()
 	.setName('cat')
-	.setDescription('cat!'),
+	.setDescription('A random cat picture'),
 
     async execute(interaction) {
         const catResult = await request('https://aws.random.cat/meow');
@@ -12,6 +12,3 @@ data: new SlashCommandBuilder()
 		interaction.editReply({ files: [{ attachment: file, name: 'cat.png' }] });
     },
 };
-
-
-

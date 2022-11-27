@@ -1,7 +1,6 @@
 const { request } = require("undici");
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
-
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("randommeal")
@@ -9,9 +8,13 @@ module.exports = {
 
   async execute(interaction) {
     const mealResult = await request(
-      'www.themealdb.com/api/json/v1/1/random.php'
+      'https://www.themealdb.com/api/json/v1/1/random.php'
     );
-    const { meals } = await mealResult.body.json();
+
+      const { meals } = await mealResult.body.json();
+      if (!meals.length) {
+        return interaction.editReply("No meals found!");
+      }
 
     const [answer] = meals;
 
