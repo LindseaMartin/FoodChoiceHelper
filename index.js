@@ -30,6 +30,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
 	const command = client.commands.get(interaction.commandName);
+	await interaction.deferReply();
 
 	if (!command) return;
 
