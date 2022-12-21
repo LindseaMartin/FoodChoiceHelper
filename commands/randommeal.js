@@ -26,12 +26,12 @@ module.exports = {
 
     const row = new ActionRowBuilder()
     .addComponents(
-      new ButtonBuilder()
+      new ButtonBuilder().setCustomId("Yes")
       .setLabel("Yes")
-      .setStyle(ButtonStyle.Success)
-      // new ButtonBuilder().setCustomId("No")
-      // .setLabel("No")
-      // .setStyle(ButtonStyle.red)*/
+      .setStyle(ButtonStyle.Success),
+      new ButtonBuilder().setCustomId("No")
+      .setLabel("No")
+      .setStyle(ButtonStyle.Danger)
     );
 
     const embed = new EmbedBuilder()
