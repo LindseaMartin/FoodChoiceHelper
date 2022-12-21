@@ -39,7 +39,9 @@ module.exports = {
       .setTitle(answer.strMeal)
       .setURL(answer.strSource)
       .setImage(`${answer.strMealThumb}`)
-      .addFields({ name: "Category", value: answer.strCategory });
+      .addFields(
+        {name: 'Category', value: answer.strCategory}
+      );
 
     await interaction.editReply({
       embeds: [embed],
