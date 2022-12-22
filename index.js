@@ -28,6 +28,17 @@ client.once(Events.ClientReady, () => {
 
 // Listen for slash commands
 client.on(Events.InteractionCreate, async interaction => {
+	if(interaction.isButton()) {
+        const button = client.buttons.get(interaction.customId);
+        if(!button) return;
+
+        try {
+            await button.execute(interaction);
+        } catch (error) {
+            console.error(error);
+            await interaction.reply({ content: 'There was an error while executing the button script !', ephemeral: true});
+        }
+	}
 	if (!interaction.isChatInputCommand()) return;
 
 	const command = client.commands.get(interaction.commandName);
@@ -43,5 +54,12 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
+
+// client.on('clickButton', async (button) => {
+// 	if(button.id === "Yes"){
+// 	  await button.reply.defer()
+// 	  await button.message.channel.send("button green")
+// 	}
+//   })
 // Log in to Discord with your client's token
 client.login(token);
