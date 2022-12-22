@@ -28,10 +28,10 @@ module.exports = {
     .addComponents(
       new ButtonBuilder()
       .setLabel("Yes")
-      .setStyle(ButtonStyle.Success)
-      // new ButtonBuilder().setCustomId("No")
-      // .setLabel("No")
-      // .setStyle(ButtonStyle.red)*/
+      .setStyle(ButtonStyle.Success),
+      new ButtonBuilder().setCustomId("No")
+      .setLabel("No")
+      .setStyle(ButtonStyle.Danger)
     );
 
     const embed = new EmbedBuilder()
